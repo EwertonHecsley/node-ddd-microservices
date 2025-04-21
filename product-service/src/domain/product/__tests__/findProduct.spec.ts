@@ -3,11 +3,13 @@ import { NotFoundError } from "../errors/custom/NotFound";
 import { FindProduct } from "../useCase/FindProduct";
 
 const mockRepository = {
-    findById: jest.fn(),
-    create: jest.fn(),
     findByName: jest.fn(),
-    findAll: jest.fn()
-}
+    create: jest.fn(),
+    findById: jest.fn(),
+    findAll: jest.fn(),
+    delete: jest.fn(),
+};
+
 
 const makeSut = () => {
     const sut = new FindProduct(mockRepository);
