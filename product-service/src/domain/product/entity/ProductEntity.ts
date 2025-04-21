@@ -6,6 +6,7 @@ type ProductType = {
     price: number;
     description: string;
     quantity: number;
+    date_created?: Date;
 }
 
 export class Product extends Entity<ProductType> {
@@ -35,6 +36,10 @@ export class Product extends Entity<ProductType> {
         return this.attributes.quantity;
     }
 
+    get date_created(): Date | undefined {
+        return this.attributes.date_created;
+    }
+
     set name(name: string) {
         this.attributes.name = name;
     }
@@ -49,5 +54,9 @@ export class Product extends Entity<ProductType> {
 
     set quantity(quantity: number) {
         this.attributes.quantity = quantity;
+    }
+
+    set date_created(date_created: Date) {
+        this.attributes.date_created = date_created;
     }
 }
