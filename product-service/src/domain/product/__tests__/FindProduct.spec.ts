@@ -6,6 +6,7 @@ const mockRepository = {
     findById: jest.fn(),
     create: jest.fn(),
     findByName: jest.fn(),
+    findAll: jest.fn()
 }
 
 const makeSut = () => {
