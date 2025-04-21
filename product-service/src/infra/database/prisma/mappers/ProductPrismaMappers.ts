@@ -1,6 +1,6 @@
 import Identity from "../../../../core/generics/Identity";
 import { Product } from "../../../../domain/product/entity/ProductEntity";
-import { Product as DatabaseProduct, Prisma } from "../../../generated/prisma";
+import { Product as DatabaseProduct } from '@prisma/client';
 
 export class ProductPrismaMapper {
     static toDomain(entity: DatabaseProduct): Product {
@@ -16,7 +16,7 @@ export class ProductPrismaMapper {
         );
     }
 
-    static toDatabase(entity: Product): Prisma.ProductCreateInput {
+    static toDatabase(entity: Product): DatabaseProduct {
         return {
             id: entity.Id.valueId,
             name: entity.name,

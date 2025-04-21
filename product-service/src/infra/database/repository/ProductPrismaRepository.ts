@@ -2,7 +2,6 @@ import { Product } from "../../../domain/product/entity/ProductEntity";
 import { ProductRepository } from "../../../domain/product/repository/ProductRepositoy";
 import { ProductPrismaMapper } from "../prisma/mappers/ProductPrismaMappers";
 import getPrismaInstance from "../prisma/singletonPrisma";
-import { Product as DatabaseProduct } from "../../generated/prisma";
 
 
 export class ProductPrismaRepository implements ProductRepository {
@@ -31,22 +30,10 @@ export class ProductPrismaRepository implements ProductRepository {
 
     }
 
-    async findByName(name: string): Promise<Product | undefined> {
-        const product = await this.prisma.product.findUnique({
-            where: {
-                name,
-            },
-        });
-
-        if (!product) return undefined;
-
-        return ProductPrismaMapper.toDomain(product);
-    }
-
     async findAll(): Promise<Product[]> {
         const products = await this.prisma.product.findMany();
 
-        return products.map((product: DatabaseProduct) => ProductPrismaMapper.toDomain(product));
+        return products.map(product => ProductPrismaMapper.toDomain(product));
     }
 
     async delete(id: string): Promise<void> {
