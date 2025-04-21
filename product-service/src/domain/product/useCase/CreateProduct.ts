@@ -20,12 +20,6 @@ export class CreateProduct {
     async execute(data: Request): Promise<Response> {
         const { name } = data;
 
-        const productExist = await this.productRepository.findByName(name);
-
-        if (productExist) {
-            return left(new BadRequest(`Product with name ${name} already exists`));
-        }
-
         const newProduct = Product.create(data);
 
         const product = await this.productRepository.create(newProduct);
