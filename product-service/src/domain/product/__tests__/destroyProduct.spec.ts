@@ -10,6 +10,7 @@ const mockRepository = {
     create: jest.fn(),
     findAll: jest.fn(),
     delete: jest.fn(),
+    save: jest.fn(),
 };
 
 const makeSut = () => {

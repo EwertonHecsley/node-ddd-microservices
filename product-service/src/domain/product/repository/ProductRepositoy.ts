@@ -6,4 +6,5 @@ export abstract class ProductRepository {
     abstract findByName(name: string): Promise<Product | undefined>;
     abstract findAll(): Promise<Product[]>;
     abstract delete(id: string): Promise<void>;
+    abstract save(entity: Product): Promise<void>;
 }
