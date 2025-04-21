@@ -18,7 +18,6 @@ export class CreateProduct {
     constructor(private readonly productRepository: ProductRepository) { }
 
     async execute(data: Request): Promise<Response> {
-        const { name } = data;
 
         const newProduct = Product.create(data);
 
