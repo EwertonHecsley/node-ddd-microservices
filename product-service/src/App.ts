@@ -1,12 +1,19 @@
 import app from "."
+import EnvironmentValidator from "./EnviromentValidate";
 import logger from "./utils/logger"
 
 export class App {
     private readonly port = process.env.PORT
 
     async bootstrap(): Promise<void> {
+        this.validateEnv();
         this.startServer();
         this.handleGracefulShutdown();
+    }
+
+    private validateEnv(): void {
+        const envValidator = new EnvironmentValidator();
+        envValidator.validateEnvironmentVariables();
     }
 
     private startServer(): void {
